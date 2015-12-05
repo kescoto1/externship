@@ -1,4 +1,5 @@
-osr<- read.csv("~/Dropbox/SileneSummer2014/socialEnvironment/operational_sex_ratio.csv", header=T)
+attach(operational_sex_ratio)
+osr<- operational_sex_ratio
 require(lme4)
 require(car)
 osr$fruitset=(osr$imm/(osr$imm+osr$abort))
