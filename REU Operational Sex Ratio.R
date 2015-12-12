@@ -1,6 +1,8 @@
 #REU Summer 2014 - Operational Sex Ratio Model
 
-osr<- read.csv("~/Dropbox/SileneSummer2014/socialEnvironment/operational_sex_ratio.csv", header=T)
+osr<- read.csv(operational_sex_ratio.csv, header=T)
+
+attach(osr)
 require(lme4)
 require(car)
 osr$fruitset=(osr$imm/(osr$imm+osr$abort))
