@@ -1,0 +1,17 @@
+{
+    "contents" : "attach(Highway)\nnewdata<-Highway[2:11]\nnewdata.pc<-princomp(newdata, cor=TRUE, scores=TRUE)\nnewdata.pc\nsum(newdata.pc$sd^2)\nsummary(newdata.pc)\npar(mfrow=c(1,1))\nscreeplot(newdata.pc, type=\"lines\", main=\"Scree Plot\")\nprint(loadings(newdata.pc),cutoff=0.3)\nPC1<-newdata.pc$scores[,1]\nPC2<-newdata.pc$scores[,2]\nPC3<-newdata.pc$scores[,3]\nHighway$PC1<-PC1\nHighway$PC2<-PC2\nHighway$PC3<-PC3\nplot(Highway[18:20], main=\"Scatterplot Matrix of PCs\")\ncor(Highway[18:20])\n\npar(mfrow=c(2,2))\nboxplot(PC1~TYPE, main=\"Boxplot of PC1 by Road Type\", xlab=\"Road Type\")\nboxplot(PC2~TYPE, main=\"Boxplot of PC2 by Road Type\", xlab=\"Road Type\")\nboxplot(PC3~TYPE, main=\"Boxplot of PC3 by Road Type\", xlab=\"Road Type\")\npc.lm<-lm(RATE~PC1+PC2+PC3)\nsummary(pc.lm)\npcnew.lm<-lm(RATE~PC1+PC2)\nsummary(pcnew.lm)",
+    "created" : 1449693419985.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2402747544",
+    "id" : "CB239DF6",
+    "lastKnownWriteTime" : 1449693325,
+    "path" : "/Rstudio_Git/kathleen/Principle Component Analysis.R",
+    "project_path" : "Principle Component Analysis.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

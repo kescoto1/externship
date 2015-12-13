@@ -1,0 +1,17 @@
+{
+    "contents" : "attach(NES2008)\n\n#Explanatory Data Analysis\npar(mfrow=c(3,4))\nfor (i in 1:11){\n  boxplot(NES2008[,2+i]~PresVote, ylab=names(NES2008)[i+2], names=c(\"McCain\", \"Obama\"))\n}\n\nsmalldata<-NES2008[,2:13]\nnesall.logm<-glm(PresVote~.,family=\"binomial\",data=smalldata)\nsummary(nesall.logm)\n\nPIDnew<-PartyID-4\n\nnesnew.logm<-glm(PresVote~PIDnew+Income+Black+Hisp+Other)\nsummary(nesnew.logm)\n\nprednes<-predict(nesnew.logm, type=\"response\")\npredObamaMcCain<-rep(\"McCain\", 1068)\nfor (i in 1:1068){\n  if (prednes[i]>0.5){\n    predObamaMcCain[i]<-\"Obama\"\n  }\n}\ntable(PresVote, predObamaMcCain)\n\nnesother.logm<-glm(PresVote~Income+Black+Hisp+Other)\nsummary(nesother.logm)\n\nprednesother<-predict(nesother.logm, type=\"response\")\npredObamaMcCainother<-rep(\"McCain\", 1068)\nfor (i in 1:1068){\n  if (prednesother[i]>0.5){\n    predObamaMcCainother[i]<-\"Obama\"\n  }\n}\ntable(PresVote, predObamaMcCainother)\n\nnesnewnew.logm<- glm(PresVote~Income+Black+Hisp+PIDnew)\nsummary(nesnewnew.logm)\n\nprednesFinal<-predict(nesnewnew.logm, type=\"response\")\npredObamaMcCainFinal<-rep(\"McCain\", 1068)\nfor (i in 1:1068){\n  if (prednesFinal[i]>0.5){\n    predObamaMcCainFinal[i]<-\"Obama\"\n  }\n}\ntable(PresVote, predObamaMcCainFinal)\n\nNES2008$Null [1:534,]<-\"0\"\ntable(PresVote, prednes)\n\nattach(NES2008)\nlibrary(tree)\nmytree <- tree(factor(PresVote) ~ Income+PIDnew+Black+Hisp,data=NES2008)\nmytree\nsummary(mytree)\nplot(mytree)\ntext(mytree)\n",
+    "created" : 1449693416708.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2900338452",
+    "id" : "8440B4B0",
+    "lastKnownWriteTime" : 1449693325,
+    "path" : "/Rstudio_Git/kathleen/Prediction Trees.R",
+    "project_path" : "Prediction Trees.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

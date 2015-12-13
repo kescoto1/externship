@@ -1,0 +1,17 @@
+{
+    "contents" : ".Rproj.user\n.Rhistory\n.RData\n*.Rproj\n\n",
+    "created" : 1449693340278.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "52949306",
+    "id" : "C9C8E17B",
+    "lastKnownWriteTime" : 1449693357,
+    "path" : "/Rstudio_Git/kathleen/.gitignore",
+    "project_path" : ".gitignore",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "gitignore"
+}
